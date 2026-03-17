@@ -48,9 +48,9 @@ const BookingForm = () => {
 
       // Change this URL to match your actual backend domain in production
       const API_URL = process.env.NODE_ENV === "production"
-        ? "https://your-backend-domain.com/api/public/website-booking"
-        : "https://renal-ease-backend-2.onrender.com/api/public/website-booking";
-        // : "http://localhost:5000/api/public/website-booking";
+        ? "https://renal-ease-backend-2.onrender.com/api/public/website-booking"
+        // : "https://renal-ease-backend-2.onrender.com/api/public/website-booking";
+        : "http://localhost:5000/api/public/website-booking";
 
       const res = await fetch(API_URL, {
         method: "POST",
