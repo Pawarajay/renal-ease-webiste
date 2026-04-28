@@ -25,7 +25,8 @@ const CITIES = ["Mumbai", "Pune", "Nashik", "Ahmedabad", "Delhi", "Other"];
 
 const API_URL =
   process.env.NODE_ENV === "production"
-    ? "https://crm-api.renalease.com/api/public/website-booking"
+    // ? "https://crm-api.renalease.com/api/public/website-booking"
+    ? "https://renal-ease-backend-2.onrender.com/api/public/website-booking"
     : "http://localhost:5000/api/public/website-booking";
 
 // ─── Component ────────────────────────────────────────────────────────────────
