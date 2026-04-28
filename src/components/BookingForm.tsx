@@ -1,3 +1,6 @@
+
+
+
 import { useState } from "react";
 import { Check, Stethoscope, MapPin, Phone, User, ChevronDown, Activity } from "lucide-react";
 
@@ -178,43 +181,26 @@ const BookingForm = () => {
             </div>
           )}
 
-          {/* ── Service Cards ──────────────────────────────────────────────── */}
-          <div className="space-y-2">
+          {/* ── Service Dropdown ───────────────────────────────────────────── */}
+          <div className="space-y-1.5">
             <label className="text-[11px] font-black uppercase tracking-[0.15em] text-muted-foreground">
               Select Service <span className="text-red-500">*</span>
             </label>
-            <div className="grid grid-cols-2 gap-2">
-              {SERVICES.map((svc) => {
-                const selected = formData.service === svc;
-                const icons: Record<string, string> = {
-                  "Home Haemodialysis":                "🩸",
-                  "HDF (Haemodialfiltration) At-home": "💉",
-                  "Peritoneal Dialysis":               "🫀",
-                  "ANM/GNM Nurse":                     "👩‍⚕️",
-                };
-                return (
-                  <button
-                    key={svc}
-                    type="button"
-                    onClick={() => setFormData((prev) => ({ ...prev, service: svc }))}
-                    className={`relative text-left p-3.5 rounded-2xl border-2 transition-all duration-200 ${
-                      selected
-                        ? "border-primary bg-primary/8 shadow-md shadow-primary/15"
-                        : "border-border bg-card hover:border-primary/40 hover:bg-primary/3"
-                    }`}
-                  >
-                    {selected && (
-                      <span className="absolute top-2.5 right-2.5 w-4 h-4 bg-primary rounded-full flex items-center justify-center">
-                        <Check className="w-2.5 h-2.5 text-primary-foreground stroke-[3]" />
-                      </span>
-                    )}
-                    <div className="text-xl mb-1.5">{icons[svc] ?? "🏥"}</div>
-                    <div className={`text-xs font-black leading-tight ${selected ? "text-primary" : "text-foreground"}`}>
-                      {svc}
-                    </div>
-                  </button>
-                );
-              })}
+            <div className="relative">
+              <select
+                required
+                value={formData.service}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, service: e.target.value }))
+                }
+                className="w-full h-12 px-4 pr-10 bg-input-bg border-2 border-border rounded-xl text-foreground text-[15px] font-medium focus:ring-0 focus:border-primary outline-none transition-all appearance-none cursor-pointer"
+              >
+                <option value="" disabled>Select a service</option>
+                {SERVICES.map((svc) => (
+                  <option key={svc} value={svc}>{svc}</option>
+                ))}
+              </select>
+              <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
             </div>
           </div>
 
